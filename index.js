@@ -3,7 +3,7 @@ const { Engine, World, Render, Bodies, Runner } = Matter;
 const engine = Engine.create();
 const { world } = engine;
 
-const cells = 5;
+const cells = 30;
 const width = 600;
 const height = 600;
 
@@ -13,7 +13,7 @@ const render = Render.create({
   element: document.body,
   engine: engine,
   options: {
-    wireframes: true, //It will make a solid shape
+    wireframes: false, //It will make a solid shape
     width: width,
     height: height
   }
@@ -82,7 +82,7 @@ const stepThroughCell = (row, column) => {
     [row - 1, column, 'up'],
     [row, column + 1, 'right'],
     [row + 1, column, 'down'],
-    [column - 1, row, 'left']
+    [row, column - 1, 'left']
   ]);
 
   // for Each Neighbor...
@@ -128,7 +128,7 @@ horizontals.forEach((row, rowIndex) => {
       columnIndex * unitLength + unitLength / 2,
       rowIndex * unitLength + unitLength,
       unitLength,
-      10,
+      5,
       {
         isStatic: true
       }
@@ -146,7 +146,7 @@ verticals.forEach((row, rowIndex) => {
     const wall = Bodies.rectangle(
       columnIndex * unitLength + unitLength,
       rowIndex * unitLength + unitLength / 2,
-      10,
+      5,
       unitLength,
       {
         isStatic: true
