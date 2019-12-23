@@ -13,7 +13,7 @@ const render = Render.create({
   element: document.body,
   engine: engine,
   options: {
-    wireframes: false, //It will make a solid shape
+    wireframes: true, //It will make a solid shape
     width: width,
     height: height
   }
@@ -24,10 +24,10 @@ Runner.run(Runner.create(), engine);
 
 // Walls
 const walls = [
-  Bodies.rectangle(width / 2, 0, width, 40, { isStatic: true }),
-  Bodies.rectangle(width / 2, height, width, 40, { isStatic: true }),
-  Bodies.rectangle(0, height / 2, 40, height, { isStatic: true }),
-  Bodies.rectangle(width, height / 2, 40, height, { isStatic: true })
+  Bodies.rectangle(width / 2, 0, width, 2, { isStatic: true }),
+  Bodies.rectangle(width / 2, height, width, 2, { isStatic: true }),
+  Bodies.rectangle(0, height / 2, 2, height, { isStatic: true }),
+  Bodies.rectangle(width, height / 2, 2, height, { isStatic: true })
 ];
 World.add(world, walls);
 
@@ -155,3 +155,22 @@ verticals.forEach((row, rowIndex) => {
     World.add(world, wall);
   });
 });
+
+// Goal
+const goal = Bodies.rectangle(
+  width - unitLength / 2,
+  height - unitLength / 2,
+  unitLength * 0.7,
+  unitLength * 0.7,
+  {
+    isStatic: true
+  }
+);
+
+World.add(world, goal);
+
+// Ball
+const ball = Bodies.circle(unitLength / 2, unitLength / 2, unitLength / 4, {
+  isStatic: true
+});
+World.add(world, ball);
