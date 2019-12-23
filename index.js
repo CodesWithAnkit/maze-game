@@ -3,7 +3,7 @@ const { Engine, World, Render, Bodies, Runner } = Matter;
 const engine = Engine.create();
 const { world } = engine;
 
-const cells = 5;
+const cells = 3;
 const width = 600;
 const height = 600;
 
@@ -42,12 +42,24 @@ const horizontals = Array(cells - 1)
   .fill(null)
   .map(() => Array(cells).fill(false));
 
-//Nested For Loop
-// for (let i = 0; i < 3; i++) {
-//   grid.push([]);
-//   for (let j = 0; j < 3; j++) {
-//     grid[i].push(false);
-//   }
-// }
+// Stating Points
 
-console.log(grid);
+const startRow = Math.floor(Math.random() * cells);
+const startColumn = Math.floor(Math.random() * cells);
+
+console.log({ Row: startRow, Column: startColumn });
+
+//Function
+
+const stepThroughCell = (row, column) => {
+  // If I visited then return
+  // Mark As Visited
+  // Assemble rendomly-orderd list of neighbor
+  // for Each Neighbor...
+  // See if that neighbor are out of bounds
+  // If we visited to neighbor Then continue to the next neighbor
+  // Remove the wall either horizontal or vertical
+  // Visit the next cell
+};
+
+stepThroughCell(startRow, startColumn);
